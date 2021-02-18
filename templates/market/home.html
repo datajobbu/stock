@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="chart">
+    <canvas id="myChart" width="200" height="60"></canvas>
+    <script src="/static/js/chartjs.min.js"></script>
+    <script>
+        var highs = '{{ highs }}';
+        var high = JSON.parse(highs);
+        var lows = '{{ lows }}';
+        var low = JSON.parse(lows);
+        var idxs = '{{ idx }}';
+        var idx = JSON.parse(idxs);
+
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: idx,
+                datasets: [{
+                    fill: false,
+                    data: high,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                    ],
+                    borderWidth: 1
+                }, {
+                    fill: false,
+                    data: low,
+                    backgroundColor: [
+                        'rgba(100, 11, 40, 0.2)',
+                    ],
+                    borderColor: [
+                        'rgba(100, 11, 40, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+            }
+        });
+    </script>
+</div>
+
+<div id="container">
+    <table class="table table-bordered table-sm">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">date</th>
+                <th scope="col">open</th>
+                <th scope="col">close</th>
+                <th scope="col">high</th>
+                <th scope="col">low</th>
+                <th scope="col">volume</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if prices %}
+            {% for price in prices %}
+            <tr>
+                <td scope="row">{{ price.date }}</td>
+                <td scope="row">{{ price.start }}</td>
+                <td scope="row">{{ price.end }}</td>
+                <td scope="row">{{ price.high }}</td>
+                <td scope="row">{{ price.low }}</td>
+                <td scope="row">{{ price.volume }}</td>
+            </tr>
+            {% endfor %}
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
