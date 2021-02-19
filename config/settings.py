@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'market.apps.MarketConfig',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -140,3 +141,5 @@ STATIC_DIR = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [
     STATIC_DIR,
 ]
+
+MODEL_ROOT = os.path.join(BASE_DIR, 'models')
