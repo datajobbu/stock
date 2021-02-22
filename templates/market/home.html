@@ -8,14 +8,15 @@
         var high = JSON.parse(highs);
         var lows = '{{ lows }}';
         var low = JSON.parse(lows);
-        var idxs = '{{ idx }}';
-        var idx = JSON.parse(idxs);
+        var dates = '{{ dates|safe }}';
+        var date = JSON.parse(dates);
+        console.log(date);
 
         var ctx = document.getElementById('myChart').getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: idx,
+                labels: date,
                 datasets: [{
                     fill: false,
                     data: high,
