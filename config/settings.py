@@ -136,9 +136,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_DIR = os.path.join(BASE_DIR, 'static')
+STATIC_DIR = os.path.join(BASE_DIR, 'static/')
 STATICFILES_DIRS = [
     STATIC_DIR,
 ]
 
-MODEL_ROOT = os.path.join(BASE_DIR, 'models')
+MODEL_ROOT = os.path.join(BASE_DIR, 'models/')
