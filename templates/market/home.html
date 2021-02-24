@@ -5,28 +5,22 @@
     <table class="table table-bordered table-sm">
         <thead class="thead-dark">
             <tr>
-                <th scope="col">date</th>
-                <th scope="col">open</th>
-                <th scope="col">close</th>
-                <th scope="col">high</th>
-                <th scope="col">low</th>
-                <th scope="col">volume</th>
+                <th scope="col">name</th>
+                <th scope="col">code</th>
             </tr>
         </thead>
         <tbody>
-            {% if prices %}
-            {% for price in prices %}
+            {% if stocks %}
+            {% for stock in stocks %}
             <tr>
-                <td scope="row">{{ price.date }}</td>
-                <td scope="row">{{ price.start }}</td>
-                <td scope="row">{{ price.end }}</td>
-                <td scope="row">{{ price.high }}</td>
-                <td scope="row">{{ price.low }}</td>
-                <td scope="row">{{ price.volume }}</td>
+                <td scope="row">{{ stock.name }}</td>
+                <td scope="row">{{ stock.code }}</td>
             </tr>
             {% endfor %}
             {% endif %}
         </tbody>
     </table>
+    <a href="{% url 'stocks:overview' %}">삼성</a>
 </div>
+
 {% endblock %}
